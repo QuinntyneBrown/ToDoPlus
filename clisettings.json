@@ -1,0 +1,17 @@
+{
+  "domainNamespace": "ToDoPlus.Api",
+  "applicationNamespace": "ToDoPlus.Api",
+  "infrastructureNamespace": "ToDoPlus.Api",
+  "apiNamespace": "ToDoPlus.Api",
+  "domainDirectory": "C:\\Projects\\ToDoPlus\\src\\ToDoPlus.Api",
+  "applicationDirectory": "C:\\Projects\\ToDoPlus\\src\\ToDoPlus.Api",
+  "infrastructureDirectory": "C:\\Projects\\ToDoPlus\\src\\ToDoPlus.Api",
+  "apiDirectory": "C:\\Projects\\ToDoPlus\\src\\ToDoPlus.Api",
+  "appDirectory": "C:\\Projects\\ToDoPlus\\src\\ToDoPlus.App",
+  "path": "C:\\Projects\\ToDoPlus",
+  "dbContext": "ToDoPlusDbContext",
+  "sourceFolder": "src",
+  "resources": [
+    "ToDo"
+  ]
+}
