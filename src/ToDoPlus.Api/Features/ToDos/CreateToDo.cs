@@ -39,7 +39,7 @@ namespace ToDoPlus.Api.Features
         
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var toDo = new ToDo(request.ToDo.Name, request.ToDo.Description);
+                var toDo = new ToDo(request.ToDo.Context, request.ToDo.Name, request.ToDo.Description);
                 
                 _context.ToDos.Add(toDo);
                 

@@ -25,25 +25,17 @@ namespace ToDoPlus.Api.Features
         public class Handler: IRequestHandler<Request, Response>
         {
             private readonly IToDoPlusDbContext _context;
-            private readonly IHttpContextAccessor _httpContextAccessor;
-        
+
             public Handler(IToDoPlusDbContext context, IHttpContextAccessor httpContextAccessor)
             {
                 _context = context;
-                _httpContextAccessor = httpContextAccessor;
             }
         
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
-            {
-                _httpContextAccessor.HttpContext.Request.Headers.TryGetValue(Constants.ContextHeader, out StringValues value);
-
-                var context = !string.IsNullOrEmpty($"{value}") ?
-                    (Context)Enum.Parse(typeof(Context), $"{value}")
-                    : Context.Personal;
-
+            {                
                 return new () {
                     ToDos = await _context.ToDos
-                    .Where(x => x.Context == context)
+                    .Where(x => x.Context == Program.Context)
                     .Select(x => x.ToDto()).ToListAsync()
                 };
             }

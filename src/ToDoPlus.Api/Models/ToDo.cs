@@ -10,8 +10,9 @@ namespace ToDoPlus.Api.Models
         public bool IsCompleted { get; private set; }
         public Context Context { get; private set; } = Context.Personal;
 
-        public ToDo(string name, string description = null)
+        public ToDo(Context context, string name, string description = null)
         {
+            Context = context;
             Name = name;
             Description = description;
         }
