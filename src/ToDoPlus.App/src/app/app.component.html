@@ -1,9 +1,6 @@
 <ng-container *ngIf="vm$ | async as vm">
-
-  <app-context-select [formControl]="contextControl">
-
-  </app-context-select>
-
-
-  <h1>{{ vm.toDos.length }}</h1>
+  <app-header></app-header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 </ng-container>

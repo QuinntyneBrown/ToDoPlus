@@ -1,0 +1,6 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <select  [formControl]="vm.contextControl" (ngModelChange)="handleModelChange(vm.contextControl)">
+    <option value="0">Personal</option>
+    <option value="1">Professional</option>
+  </select>
+</ng-container>

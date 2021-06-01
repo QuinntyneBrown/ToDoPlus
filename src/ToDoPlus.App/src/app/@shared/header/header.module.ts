@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContextSelectComponent } from './context-select.component';
+import { HeaderComponent } from './header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    ContextSelectComponent
+    HeaderComponent
   ],
   exports: [
-    ContextSelectComponent
+    HeaderComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
-export class ContextSelectModule { }
+export class HeaderModule { }
