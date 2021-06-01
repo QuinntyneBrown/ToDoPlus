@@ -26,9 +26,9 @@ namespace ToDoPlus.Api.Controllers
         [HttpPut(Name = "UpdateCurrentContextRoute")]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(GetCurrentContext.Response), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<GetCurrentContext.Response>> Update()
-            => await _mediator.Send(new GetCurrentContext.Request());
+        [ProducesResponseType(typeof(UpdateCurrentContext.Response), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<UpdateCurrentContext.Response>> Update([FromBody] UpdateCurrentContext.Request request)
+            => await _mediator.Send(request);
 
 
     }

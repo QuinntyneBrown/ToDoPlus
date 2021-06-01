@@ -1,16 +1,14 @@
-using ToDoPlus.Api.Data;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Linq;
+using ToDoPlus.Api.Data;
+using ToDoPlus.Api.Models;
 
 namespace ToDoPlus.Api
 {
     public class Program
     {
+        public static Context Context = Context.Personal;
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();

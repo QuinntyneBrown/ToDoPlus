@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ToDo } from '@api/models';
+import { baseUrl } from '@core/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { ToDo } from '@api/models';
 export class ToDoService  {
 
   constructor(
-    @Inject("baseUrl") private readonly _baseUrl: string,
+    @Inject(baseUrl) private readonly _baseUrl: string,
     private readonly _client: HttpClient
   ) { }
 
@@ -36,7 +37,7 @@ export class ToDoService  {
   public create(options: { toDo: ToDo }): Observable<{ toDo: ToDo }> {
     return this._client.post<{ toDo: ToDo }>(`${this._baseUrl}api/toDo`, { toDo: options.toDo });
   }
-  
+
   public update(options: { toDo: ToDo }): Observable<{ toDo: ToDo }> {
     return this._client.put<{ toDo: ToDo }>(`${this._baseUrl}api/toDo`, { toDo: options.toDo });
   }

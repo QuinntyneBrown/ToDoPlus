@@ -13,9 +13,7 @@ namespace ToDoPlus.Api.Features
             public Context Context { get; set; }
         }
 
-        public class Response: ResponseBase { 
-
-        }
+        public class Response: ResponseBase { }
 
         public class Handler: IRequestHandler<Request, Response>
         {
@@ -26,6 +24,8 @@ namespace ToDoPlus.Api.Features
         
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
+                Program.Context = request.Context;
+
                 return new () {
 
                 };
