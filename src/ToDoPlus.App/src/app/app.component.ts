@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy  {
     this.contextControl.valueChanges
     .pipe(
       takeUntil(this._destroyed$),
-      switchMap(context => this._contextService.SetCurrent({ context }))
+      switchMap(context => this._contextService.setCurrent({ context }))
     ).subscribe();
   }
 
