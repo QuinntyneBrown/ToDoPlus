@@ -19,14 +19,13 @@ export class ContextService  {
   ) { }
 
   public getCurrent(): Observable<Context> {
-
     return this._client.get<{ context: Context }>(`${this._baseUrl}api/context`)
       .pipe(
         map(x => x.context)
       );
   }
 
-  public SetCurrent(options: { context: Context }): Observable<{ context: Context }> {
+  public setCurrent(options: { context: Context }): Observable<{ context: Context }> {
     return this._client.put<{ context: Context }>(`${this._baseUrl}api/context`, { context: +options.context })
     .pipe(
       tap(x => {

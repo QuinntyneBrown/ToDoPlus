@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { map, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { ToDoService, ContextService, ToDo } from '@api';
 import { FormControl } from '@angular/forms';
 
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy  {
 
   public vm$: Observable<ViewModel> = this._contextService.currentContext$
   .pipe(
-    tap(x => this.contextControl.setValue(x, { emitEvent: false })),
+    tap(context => this.contextControl.setValue(context, { emitEvent: false })),
     switchMap(_ => this._toDoService.get()),
     map(toDos => ({ toDos}))
   )
