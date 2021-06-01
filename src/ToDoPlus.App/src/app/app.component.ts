@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { map, startWith, switchMap, tap } from 'rxjs/operators';
+import { map, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { ToDoService, ContextService, ToDo } from '@api';
 import { FormControl } from '@angular/forms';
 
@@ -33,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy  {
   ngOnInit() {
     this.contextControl.valueChanges
     .pipe(
+      takeUntil(this._destroyed$),
       switchMap(context => this._contextService.SetCurrent({ context }))
     ).subscribe();
   }
