@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { map, startWith, switchMap, tap } from 'rxjs/operators';
 import { ToDoService, ContextService, ToDo } from '@api';
@@ -13,9 +13,10 @@ type ViewModel = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit, OnDestroy  {
 
   public readonly contextControl = new FormControl(null,[]);
+  private readonly _destroyed$: Subject<void> = new Subject();
 
   public vm$: Observable<ViewModel> = this._contextService.currentContext$
   .pipe(
@@ -36,4 +37,8 @@ export class AppComponent implements OnInit  {
     ).subscribe();
   }
 
+  ngOnDestroy() {
+    this._destroyed$.next();
+    this._destroyed$.complete();
+  }
 }
