@@ -21,6 +21,7 @@ export class ContextService  {
   public getCurrent(): Observable<Context> {
     return this._client.get<{ context: Context }>(`${this._baseUrl}api/context`)
       .pipe(
+        tap(x => this.currentContext$.next(x.context)),
         map(x => x.context)
       );
   }
